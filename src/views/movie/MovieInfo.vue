@@ -283,12 +283,6 @@
 
 <!--    电影类型管理界面-->
     <el-dialog title="电影类型管理" :visible.sync="editCategoryVisible" width="60%" @close="editCategoryDialogClosed">
-<!--      <template>-->
-<!--        <el-checkbox-group-->
-<!--            v-model="selectedMovieCategory">-->
-<!--          <el-checkbox v-for="category in movieCategoryList" :label="category.movieCategoryName" :key="category.movieCategoryId">{{category.movieCategoryName}}</el-checkbox>-->
-<!--        </el-checkbox-group>-->
-<!--      </template>-->
       <el-form label-width="100px">
         <el-form-item label="电影类型" prop="movieActor">
           <el-select v-model="selectedMovieCategory" placeholder="请选择类型名称" clearable>

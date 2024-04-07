@@ -1,8 +1,3 @@
-/*
- * @Description: 
- * @Author: Rabbiter
- * @Date: 2023-02-24 18:08:33
- */
 "use strict";
 
 import Vue from 'vue';

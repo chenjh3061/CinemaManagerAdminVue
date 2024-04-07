@@ -3,7 +3,6 @@
     <el-header>
       <div class="span-container" style="padding: 5px" @click="toWelcome">
         <span>&nbsp;&nbsp;</span>
-        <!-- <img src="../assets/logo02.jpg" alt="" height="40px" width="40px"> -->
         <div style="margin: 5px; font-size: 28px;font-weight: 600;">南国影院管理系统</div>
       </div>
       <el-button type="info" @click="logout"  style="font-size: 18px;">

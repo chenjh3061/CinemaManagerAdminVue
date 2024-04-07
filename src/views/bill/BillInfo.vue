@@ -57,7 +57,7 @@
         <el-table-column prop="createTime" label="订票时间"></el-table-column>
         <el-table-column prop="payState" label="订单状态" width="80">
           <template slot-scope="scope">
-            <span v-if="scope.row.payState === true" style="color: #13ce66">已完成</span>
+            <span v-if="scope.row.payState === true" style="color: #13ce66">已完成</span><br>
             <span v-if="scope.row.payState !== true && scope.row.cancelState !== true " style="color: #145ddc">未支付</span>
             <span v-if="scope.row.cancelState === true && scope.row.cancelTime ===null" style="color: #e6a23c">超时取消</span>
             <span v-if="scope.row.cancelState === true && scope.row.cancelTime !==null" style="color: crimson">用户取消</span>
@@ -251,13 +251,11 @@ export default {
     async showEditDialog(id) {
       let isAbleEdit = true
       await axios.get('sysBill/' + id ).then(resp => {
-        console.log(resp)
         this.editForm = resp.data.data
         this.editForm.sysUser = resp.data.data.sysUser
-        console.log('this.editForm')
-        console.log(this.editForm)
 
-        if (this.editForm.payState === true || this.editForm.cancelState === true) {
+        // this.editForm.payState === true || 
+        if (this.editForm.cancelState === true) {
           isAbleEdit = false
           this.$alert('抱歉！订单已完成或已取消，不能修改。', '修改请求异常通知', {
             confirmButtonText: '我知道了',

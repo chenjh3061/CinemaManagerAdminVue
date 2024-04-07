@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "iconfont"; /* Project id 4215199 */
+  font-family: "iconfont"; 
   src: url('iconfont.woff2?t=1693416579183') format('woff2'),
        url('iconfont.woff?t=1693416579183') format('woff'),
        url('iconfont.ttf?t=1693416579183') format('truetype');
@@ -38,7 +38,8 @@
 }
 
 .icon-r-building:before {
-  content: "\e61e";
+  content: "";
+  /* \e61e */
 }
 
 .icon-r-team:before {
@@ -62,7 +63,8 @@
 }
 
 .icon-r-user2:before {
-  content: "\e613";
+  content: "";
+  /* \e613 */
 }
 
 .icon-r-delete:before {
@@ -74,7 +76,8 @@
 }
 
 .icon-r-paper:before {
-  content: "\e616";
+  content: "";
+  /* \e616 */
 }
 
 .icon-r-setting:before {
@@ -86,11 +89,13 @@
 }
 
 .icon-r-home:before {
-  content: "\e619";
+  content: "";
+  /* \e619 */
 }
 
 .icon-r-shield:before {
-  content: "\e61a";
+  content: "";
+  /* \e61a */
 }
 
 .icon-r-user3:before {
@@ -102,7 +107,8 @@
 }
 
 .icon-r-user1:before {
-  content: "\e60a";
+  content: "";
+  /* \e60a */
 }
 
 .icon-r-love:before {

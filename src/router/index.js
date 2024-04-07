@@ -1,8 +1,3 @@
-/*
- * @Description:
- * @Author: Rabbiter
- * @Date: 2023-02-24 18:08:33
- */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { Message }from 'element-ui'

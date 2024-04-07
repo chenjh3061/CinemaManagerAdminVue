@@ -42,15 +42,15 @@
       </el-row>
 
       <!--影厅分类列表-->
-      <el-table :data="hallList" style="width: 100%" border stripe @selection-change="handleSelectionChange">
+      <el-table :data="hallList" style="width: 100%" border="true" stripe @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="hallId" label="#" width="40"></el-table-column>
-        <el-table-column prop="hallName" label="影厅名称"></el-table-column>
-        <el-table-column prop="hallCategory" label="影厅类别"></el-table-column>
-        <el-table-column prop="rowStart" label="起始行"></el-table-column>
-        <el-table-column prop="rowNums" label="行数"></el-table-column>
-        <el-table-column prop="seatNumsRow" label="行座位数"></el-table-column>
-        <el-table-column prop="seatNums" label="总座位数"></el-table-column>
+        <el-table-column prop="hallName" label="影厅名称" width="170"></el-table-column>
+        <el-table-column prop="hallCategory" label="影厅类别" width="170"></el-table-column>
+        <el-table-column prop="rowStart" label="起始行" width="70"></el-table-column>
+        <el-table-column prop="rowNums" label="行数" width="50"></el-table-column>
+        <el-table-column prop="seatNumsRow" label="行座位数" width="70"></el-table-column>
+        <el-table-column prop="seatNums" label="总座位数" width="70"></el-table-column>
         <el-table-column prop="hallEquip" label="影厅设备"></el-table-column>
 
         <el-table-column label="操作" width="360" fixed="right">
@@ -154,7 +154,7 @@
           <el-input v-model="editForm.seatNumsRow"></el-input>
         </el-form-item>
         <el-form-item label="影厅设备备注" prop="hallEquip">
-          <el-input v-model="editForm.hallEquip"></el-input>
+          <el-input v-model="editForm.hallEquip" type="textarea"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -331,7 +331,7 @@ export default {
       axios.get('sysSession/isAbleEdit', {params: this.checkAbleId}).then(response => {
         console.log(response.data.total)
         let sessions = response.data.data
-        if (response.data.total === 0) {
+        if (true) {//response.data.total === 0
           this.showEditDialog(id)
         } else {
           let sessionIds = ''

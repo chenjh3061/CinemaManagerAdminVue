@@ -20,7 +20,7 @@
                 <el-form-item prop="userName">
                     <el-col :span="2">
                         <i
-                            class="iconfont icon-r-user1"
+                            class="el-icon-video-camera-solid"
                             style="font-size: 28px; color: grey"
                         ></i>
                     </el-col>
