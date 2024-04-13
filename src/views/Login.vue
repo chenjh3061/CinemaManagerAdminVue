@@ -62,7 +62,7 @@
                     </el-button>
                 </el-form-item>
                 <el-form-item>
-                    <el-text tag="ins" class="changeAS" type="info" :underline="true" 
+                    <el-text tag="ins" class="changeAS" type="info" :underline="true"
                             @click="adminOrSeller = false;clearRegisterData()" >
                         售票员入口->
                     </el-text>
@@ -81,7 +81,7 @@
                 <el-form-item prop="userName">
                     <el-col :span="2">
                         <i
-                            class="iconfont icon-r-user1"
+                            class="el-icon-user-solid"
                             style="font-size: 28px; color: grey"
                         ></i>
                     </el-col>
@@ -310,7 +310,7 @@ export default {
 .changeAS {
     font: 2em sans-serif;
     font-size: large;
-    
+
 }
 .login_form {
     position: absolute;

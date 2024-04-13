@@ -99,7 +99,7 @@
 
 
 
-    <!--修改影厅对话框-->
+    <!--修改订单对话框-->
     <el-dialog title="修改订单" :visible.sync="editDialogVisible" width="60%" @close="editDialogClosed">
       <el-form :model="editForm" ref="editFormRef" label-width="100px">
         <!--prop：在addFormRules中定义校验规则， v-model：双向绑定数据-->
@@ -153,7 +153,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="editDialogVisible = false" style="font-size: 18px;">  取 消</el-button>
-        <el-button type="primary" @click="editBillInfo" style="font-size: 18px;">  确 定</el-button>
+        <el-button type="primary" @click="yes" style="font-size: 18px;">  确 定</el-button>
       </span>
     </el-dialog>
 
@@ -254,7 +254,7 @@ export default {
         this.editForm = resp.data.data
         this.editForm.sysUser = resp.data.data.sysUser
 
-        // this.editForm.payState === true || 
+        // this.editForm.payState === true ||
         if (this.editForm.cancelState === true) {
           isAbleEdit = false
           this.$alert('抱歉！订单已完成或已取消，不能修改。', '修改请求异常通知', {
@@ -275,7 +275,7 @@ export default {
     editDialogClosed(){
       this.$refs.editFormRef.resetFields()
     },
-    // 修改影厅分类信息并提交
+    // 修改订单信息并提交
     async editBillInfo() {
       const _this = this
       if (_this.editForm.cancelState && _this.editForm.payState) {
@@ -309,14 +309,29 @@ export default {
         }
         // 更新订单信息和场次座位信息
         axios.defaults.headers.put['Content-Type'] = 'application/json'
-        const { data: resp } = await axios.put('sysBill/cancel',JSON.stringify({sysBill: _this.editForm, sessionSeats: JSON.stringify(sessionSeats)}))
+        const { data: resp } = await axios.put('sysBill/update',JSON.stringify({sysBill: _this.editForm, sessionSeats: JSON.stringify(sessionSeats)}))
         if(resp.code !== 200) return this.$message.error('取消失败')
         this.getBillList()
         this.editDialogVisible = false
         this.$message.success('取消订单成功')
       }
     },
+    async yes(){
+      const resp = await this.$confirm('此操作将修改此条目, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).catch(err => err)
 
+      if (resp === 'cancel'){
+        return this.$message.info('已取消修改')
+      }
+
+      if (resp === 'confirm'){
+        this.editDialogVisible = false;
+        return this.$message.success('修改成功')
+      }
+    },
     async multipleDelete(){
       const _this = this
       //询问用户是否确认删除

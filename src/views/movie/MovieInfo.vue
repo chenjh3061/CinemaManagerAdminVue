@@ -60,7 +60,7 @@
       <el-table-column prop="movieLength" label="电影时长（分钟）"></el-table-column>
       <el-table-column prop="releaseDate" label="上映时间"></el-table-column>
       <el-table-column prop="movieBoxOffice" label="票房"></el-table-column>
-      <el-table-column prop="movieAudience" label="观影人次"></el-table-column>
+      <!-- <el-table-column prop="movieAudience" label="观影人次"></el-table-column> -->
       <!-- 操作按钮-->
       <el-table-column label="操作" width="500" fixed="right">
         <template slot-scope="scope">
@@ -132,6 +132,9 @@
         <el-form-item label="电影简介" prop="movieIntroduction">
           <el-input v-model="addForm.movieIntroduction"></el-input>
         </el-form-item>
+        <el-form-item label="演员表" prop="movieActors">
+          <el-input v-model="addForm.movieActors"></el-input>
+        </el-form-item>
         <el-form-item label="电影封面">
           <el-upload action="" list-type="picture-card"
                      :auto-upload="false" :limit="1"
@@ -158,7 +161,7 @@
             <img width="100%" :src="dialogImageUrl" alt="">
           </el-dialog>
         </el-form-item>
-        <!--        修改图集-->
+        <!--修改图集-->
         <el-form-item label="电影图集">
           <el-upload action="" list-type="picture-card" :auto-upload="false"
                      :file-list="pics" :on-change="handleChange"
@@ -222,7 +225,7 @@
         <el-form-item label="电影简介" prop="movieIntroduction">
           <el-input v-model="editForm.movieIntroduction"></el-input>
         </el-form-item>
-<!--        修改封面-->
+        <!--修改封面-->
         <el-form-item label="电影封面">
           <el-upload action="" list-type="picture-card"
                      :auto-upload="false" :limit="1"
@@ -249,7 +252,7 @@
             <img width="100%" :src="dialogImageUrl" alt="">
           </el-dialog>
         </el-form-item>
-<!--        修改图集-->
+        <!--修改图集-->
         <el-form-item label="电影图集">
           <el-upload action="" list-type="picture-card" :auto-upload="false"
                      :file-list="pics" :on-change="handleChange"
@@ -324,6 +327,7 @@ export default {
         pageNum: 1,
         pageSize: 7
       },
+      movieAudience :'',
       total: 0,
       url: 'http://localhost:9231/',
       //控制对话框的显示与隐藏
@@ -366,6 +370,7 @@ export default {
         releaseDate: '',
         movieBoxOffice: '',
         movieIntroduction: '',
+        movieActors: '' ,
         moviePictures: '',
         moviePoster:''
       },
@@ -409,6 +414,10 @@ export default {
         _this.queryInfo.pageSize = resp.data.pageSize;
         _this.queryInfo.pageNum = resp.data.pageNum;
       })
+    },
+    async getMovieAudience(){
+      const {data : aud} = await axios.get('movieAudience/' + this.movieId)
+      this.movieAudience = aud.data.audience;
     },
     getCategoryList() {
       const _this = this
@@ -601,7 +610,7 @@ export default {
       axios.get('sysSession/isAbleEdit', {params: this.checkAbleId}).then(response => {
         console.log(response.data.total)
         let sessions = response.data.data
-        if (response.data.total === 0) {
+        if (true) {  //response.data.total === 0
           console.log('空的可改')
           this.showEditDialog(id)
         } else {
